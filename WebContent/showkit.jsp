@@ -12,6 +12,16 @@
 
 <%-- Required View Template --%>
 
+<h3>New User</h3>
+	
+	<form action='placeorder' method="POST">
+	
+		<div>
+			<label>Address: </label>
+			<input type="text"  value="${coronakit.deliveryAddress }" name="deliveryAddress" size="=100" minlength="3" maxlength="450" required/>
+		</div>
+		
+		<button>Place Order</button>	
 <hr/>	
 	<jsp:include page="footer.jsp"/>
 </body>

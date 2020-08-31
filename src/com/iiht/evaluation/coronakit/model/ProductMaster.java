@@ -2,6 +2,7 @@ package com.iiht.evaluation.coronakit.model;
 
 public class ProductMaster {
 	
+	private boolean isslected;
 	private int id;
 	private String productName;
 	private Double cost;
@@ -13,11 +14,22 @@ public class ProductMaster {
 	
 	public ProductMaster(int id, String productName, Double cost, String productDescription) {
 		super();
+		this.isslected = false;
 		this.id = id;
 		this.productName = productName;
 		this.cost = cost;
 		this.productDescription = productDescription;
 	}
+	
+	
+	public boolean isIsslected() {
+		return isslected;
+	}
+
+	public void setIsslected(boolean isslected) {
+		this.isslected = isslected;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -24,7 +24,7 @@ import com.iiht.evaluation.coronakit.service.*;
 
 
 
-@WebServlet({"/admin","/editItem", "/newItem", "/saveItem", "/addItem", "/logout"})
+@WebServlet({"/admin","/editItem", "/newItem", "/saveItem", "/addItem", "/deleteItem", "/logout", "/list"})
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductMasterDao productMasterDao;
@@ -80,16 +80,15 @@ public class AdminController extends HttpServlet {
 			case "/saveItem":
 				viewName = updateProduct(request, response);
 				break;
-			case "list":
+			case "/list":
 				viewName = listAllProducts(request, response);
 				break;	
-			case "logout":
+			case "/logout":
 				viewName = adminLogout(request, response);
 				break;	
 			default : viewName = "notfound.jsp"; break;		
 			}
 		} catch (Exception ex) {
-			System.out.println("hello");
 			ex.printStackTrace();
 			throw new ServletException(ex.getMessage());
 		}
@@ -101,7 +100,7 @@ public class AdminController extends HttpServlet {
 
 	private String adminLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 								
-		request.getRequestDispatcher("index.jsp").include(request, response);
+		//request.getRequestDispatcher("index.jsp").include(request, response);
 		HttpSession session=request.getSession();  
         session.invalidate();  
         
@@ -110,8 +109,18 @@ public class AdminController extends HttpServlet {
 	}
 
 	private String listAllProducts(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return "";
+		String view="";
+		
+		try {
+			setListingProducts(request);
+			view="listproducts.jsp";
+			
+		} catch (ImsException e) {
+			request.setAttribute("errMsg", e.getMessage());
+			view="errorPage.jsp";
+		}
+		
+		return view;
 	}
 
 	private String updateProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -127,7 +136,10 @@ public class AdminController extends HttpServlet {
 		  
 		  try { 
 			  itemService.validateAndSave(item);
-			  request.setAttribute("msg", "Item Got Saved!"); view="index.jsp";
+			  request.setAttribute("msg", "Item Got Saved!"); 
+			  //setListingProducts(request);
+			  //view="listproducts.jsp";
+			  view="message.jsp";
 			  } catch (ImsException e) {
 				  request.setAttribute("errMsg", e.getMessage()); view="errPage.jsp"; 
 			}
@@ -153,8 +165,18 @@ public class AdminController extends HttpServlet {
 	}
 
 	private String deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return "";
+		int id = Integer.parseInt(request.getParameter("id"));
+		String view="";
+		
+		try {
+			itemService.deleteItem(id);
+			request.setAttribute("msg", "Item Got Deleted!");
+			view="message.jsp";
+		} catch (ImsException e) {
+			request.setAttribute("errMsg", e.getMessage());
+			view="errPage.jsp";
+		}
+		return view;
 	}
 
 	private String insertProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -170,12 +192,19 @@ public class AdminController extends HttpServlet {
 		try {
 			itemService.validateAndAdd(item);
 			request.setAttribute("msg", "Item Got Added!");
-			view="listproducts.jsp";
+			//setListingProducts(request);
+			//view="listproducts.jsp";
+			view="message.jsp";
 		} catch (ImsException e) {
 			request.setAttribute("errMsg", e.getMessage());
 			view="errPage.jsp";
 		}
 		return view;
+	}
+
+	public void setListingProducts(HttpServletRequest request) throws ImsException {
+		List<ProductMaster> items = itemService.getAllItems();
+		request.setAttribute("items", items);
 	}
 
 	private String showNewProductForm(HttpServletRequest request, HttpServletResponse response) {
@@ -189,8 +218,7 @@ public class AdminController extends HttpServlet {
 		String view="";
 			
 			try {
-				List<ProductMaster> items = itemService.getAllItems();
-				request.setAttribute("items", items);
+				setListingProducts(request);
 				view="listproducts.jsp";
 				
 				/*

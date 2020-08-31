@@ -86,6 +86,12 @@ private boolean isValidItem(ProductMaster item) throws ImsException  {
 	return item;
 	}
 
+@Override
+public boolean deleteItem(int id) throws ImsException {
+return itemDao.deleteById(id);
+	
+}
+
 	@Override
 	public ProductMaster validateAndSave(ProductMaster item) throws ImsException {
 		
@@ -109,6 +115,12 @@ private boolean isValidItem(ProductMaster item) throws ImsException  {
 	public List<ProductMaster> getAllItems() throws ImsException {
 		return itemDao.getAll();
 	}
+	
+	@Override
+	public List<ProductMaster> getItemsByIds(Integer[] ids) throws ImsException {
+		return itemDao.getByIds(ids);
+	}
+	
 	
 
 }

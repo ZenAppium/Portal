@@ -1,22 +1,26 @@
 package com.iiht.evaluation.coronakit.model;
 
+import java.util.List;
+
 public class CoronaKit {
 	
 	private int id;
 	private String personName;
 	private String email;
 	private String contactNumber;
-	private int totalAmount;
+	private Double totalAmount;
 	private String deliveryAddress;
 	private String orderDate;
 	private boolean orderFinalized;
+	private List<Integer> productId;
+	private int quantity;
 	
 	public CoronaKit() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public CoronaKit(int id, String personName, String email, String contactNumber, int totalAmount,
-			String deliveryAddress, String orderDate, boolean orderFinalized) {
+	public CoronaKit(int id, String personName, String email, String contactNumber, Double totalAmount,
+			String deliveryAddress, String orderDate, boolean orderFinalized, List<Integer> productId, int quantity) {
 		this.id = id;
 		this.personName = personName;
 		this.email = email;
@@ -25,6 +29,8 @@ public class CoronaKit {
 		this.deliveryAddress = deliveryAddress;
 		this.orderDate = orderDate;
 		this.orderFinalized = orderFinalized;
+		this.productId = productId;
+		this.quantity = quantity;
 	}
 	public int getId() {
 		return id;
@@ -50,10 +56,10 @@ public class CoronaKit {
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-	public int getTotalAmount() {
+	public Double getTotalAmount() {
 		return totalAmount;
 	}
-	public void setTotalAmount(int totalAmount) {
+	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 	public String getDeliveryAddress() {
@@ -73,6 +79,18 @@ public class CoronaKit {
 	}
 	public void setOrderFinalized(boolean orderFinalized) {
 		this.orderFinalized = orderFinalized;
+	}
+	public List<Integer> getProductId() {
+		return productId;
+	}
+	public void setProductId(List<Integer> productId) {
+		this.productId = productId;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 	

@@ -7,17 +7,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Corona Kit-All Products(Admin)</title>
+<title>Cart</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h4><a href="newItem">Add New Products</a></h4>
-<h5><a href= "logout"> LOGOUT</a></h5>
+
 
 <hr/>
 
-<h3>Items</h3>
-	
+<h2>Items</h2>
+	<form action='addaddress' method="POST">
 	<c:choose>
 		<c:when test="${items==null || items.isEmpty() }">
 			<p>No Items Found</p>
@@ -37,19 +36,16 @@
 					<td>${item.cost }</td>
 					<td>${item.productDescription }</td>
 					
-					<td>
-						
-						<a href="editItem?action=editproduct&id=${item.id }">EDIT</a> <span>|</span>
-						<a href="deleteItem?action=deleteproduct&id=${item.id }">DELETE</a> <span>|</span>
-					
-						
-					</td>
 				</tr>				
 				</c:forEach>
 			</table>
 		</c:otherwise>
 	</c:choose>
-
+		<div>
+			<label>Qty: </label>
+			<input type="number" value="${coronakit.quantity }" name="quantity" minlength="1" maxlength="10" size="2" required />
+		</div>
+<button>Proceed</button>
 <hr/>	
 	<jsp:include page="footer.jsp"/>
 </body>

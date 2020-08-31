@@ -12,5 +12,7 @@ public interface ItemService {
 	ProductMaster validateAndSave(ProductMaster item) throws ImsException;
 	ProductMaster getItemById(Integer id) throws ImsException;
 	List<ProductMaster> getAllItems() throws ImsException;
+	List<ProductMaster> getItemsByIds(Integer[] ids) throws ImsException;
+	boolean deleteItem(int id) throws ImsException;
 
 }

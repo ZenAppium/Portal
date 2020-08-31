@@ -21,6 +21,17 @@ productCost decimal not null,
 productDescription varchar(1000) not null
 );
 
+CREATE TABLE `kitdetail` (
+  `id` int(11) NOT NULL,
+  `personName` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `contactNumber` varchar(45) DEFAULT NULL,
+  `totalAmount` int(11) DEFAULT NULL,
+  `deliveryAddress` varchar(45) DEFAULT NULL,
+  `orderDate` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 INSERT INTO coronakititems VALUES
 (101, "SAFE+ N95 Pink 5 Layered Face Mask Pack of 1", 149, "Certified N95 Protection : Its an N95 mask tested as per WHO-GMP, EN149:2001, U.S. FDA standards in an ISO Certified lab."),
 (102, "Braun BNT100 No Touch Infrared Thermometer (White)", 2499, "No-touch thermometer: this thermometer allows you to take clinically accurate readings without waking your sleeping child or adult. Measure temperatures on the forehead, an object or for bath water"),
@@ -47,3 +58,11 @@ Enhanced 5 layered filtration technique With Ultra Strong Protection: 5"),
 (121, "AUTOPRO COVID Protection Detachable Plastic Cabin for Automobiles", 499, "HIGHLY TRANSPARENT HEAVY GSM EASY TO INSTALL & UNINSTALL NO DAMAGE TO INTERIOR WIPE CLEAN"),
 (122, "KaaHego AM A COVID-19 Fighter Lets Keep Distance Vinyl Decal Sticker for Bumper Car Windows,Truck,Bike,Motorcycle(Size 19.5x11.5cm)_Yellow/Black",99, "Material Type:Vinyl And Poly Vinyl (Water resistance),Quantity: 1 // Size 19.5cm x11.5cm Stands Up Against Water, Dirt, Grease,Salt,Mild Acids And Oil Easy Install Easy Remove Water Resistance"),
 (123, "Lifebuoy Laundry Sanitizer, 500 ml", 100, "A simple step of sanitization with Lifebuoy Laundry Sanitizer for ultra clean clothes post a detergent wash");
+
+(`id`,`personName`,`email`,`contactNumber`,`totalAmount`,`deliveryAddress`,`orderDate`) VALUES (-184797480,'fsgdrfhg','[56, 57]','0',78,'ewewew','2020/08/30 21:15:02');
+INSERT INTO `` (`id`,`personName`,`email`,`contactNumber`,`totalAmount`,`deliveryAddress`,`orderDate`) VALUES (883028677,'fsgdrfhg','[122, 123]','0',199,'ewewew','2020/08/30 21:17:02');
+INSERT INTO `` (`id`,`personName`,`email`,`contactNumber`,`totalAmount`,`deliveryAddress`,`orderDate`) VALUES (768828522,'fsgdrfhg','[122, 123]','0',199,'ewewew','2020/08/30 21:19:36');
+INSERT INTO `` (`id`,`personName`,`email`,`contactNumber`,`totalAmount`,`deliveryAddress`,`orderDate`) VALUES (1778146327,'fsgdrfhg','[122, 123]','0',199,'ewewew','2020/08/30 21:21:09');
+INSERT INTO `` (`id`,`personName`,`email`,`contactNumber`,`totalAmount`,`deliveryAddress`,`orderDate`) VALUES (-2107889983,'fsdgdfh','[3, 55, 57]','4',139,'s2restdyhffh','2020/08/30 21:44:30');
+INSERT INTO `` (`id`,`personName`,`email`,`contactNumber`,`totalAmount`,`deliveryAddress`,`orderDate`) VALUES (-1913006941,'test user 2','[3, 55]','5',360,'s2restdyhffh','2020/08/30 21:48:42');
+INSERT INTO `` (`id`,`personName`,`email`,`contactNumber`,`totalAmount`,`deliveryAddress`,`orderDate`) VALUES (827231737,'lilly','[58, 101]','6',1032,'ewewew','2020/08/31 12:29:35');

@@ -7,17 +7,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Corona Kit-All Products(Admin)</title>
+<title>Select Product to add</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h4><a href="newItem">Add New Products</a></h4>
-<h5><a href= "logout"> LOGOUT</a></h5>
+
 
 <hr/>
 
-<h3>Items</h3>
-	
+<h2>Items</h2>
+	<form action='addtocart' method="POST">
 	<c:choose>
 		<c:when test="${items==null || items.isEmpty() }">
 			<p>No Items Found</p>
@@ -25,6 +24,7 @@
 		<c:otherwise>
 			<table border="1" cellspacing="5px" cellpadding="5px">
 				<tr>
+					<th>Select</th>
 					<th>ProductID</th>
 					<th>ProductName</th>
 					<th>ProductCost</th>
@@ -32,24 +32,21 @@
 					</tr>
 				<c:forEach items="${items }" var="item">
 					<tr>
+					<td align="center">  
+			            <input type="checkbox" name="selectedItems"   
+			                value="<c:out value="${item.id}"/>"/>  
+       			 	</td>
 					<td>${item.id }</td>
 					<td>${item.productName }</td>
 					<td>${item.cost }</td>
 					<td>${item.productDescription }</td>
 					
-					<td>
-						
-						<a href="editItem?action=editproduct&id=${item.id }">EDIT</a> <span>|</span>
-						<a href="deleteItem?action=deleteproduct&id=${item.id }">DELETE</a> <span>|</span>
-					
-						
-					</td>
 				</tr>				
 				</c:forEach>
 			</table>
 		</c:otherwise>
 	</c:choose>
-
+<button>Add to Cart</button>
 <hr/>	
 	<jsp:include page="footer.jsp"/>
 </body>

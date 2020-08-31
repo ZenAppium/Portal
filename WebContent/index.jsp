@@ -27,7 +27,7 @@
 </div>
 <hr/>
 <div>
-	<a href="user?action=newuser"><button>Create Corona Kit</button></a>
+	<a href="newUser"><button>Create Corona Kit</button></a>
 </div>
 <hr/>	
 	<jsp:include page="footer.jsp"/>
